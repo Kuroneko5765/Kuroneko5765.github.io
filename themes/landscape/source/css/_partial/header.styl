@@ -1,5 +1,5 @@
 #header
-  height: 400px /* 头图高度，可自行调整 */
+  height: 800px /* 头图高度，可自行调整 */
   position: relative
   border-bottom: 1px solid color-border
   overflow: hidden /* 防止头图放大时溢出 */
@@ -11,7 +11,7 @@
     right: 0
     height: 40px
     z-index: 3 /* 确保渐变层在图片上方 */
-    pointer-events: none /* 核心修复：让鼠标穿透遮罩层，不挡点击 */
+    pointer-events: none /* 让鼠标穿透遮罩层，不挡点击 */
     
   &:before
     top: 0
@@ -20,10 +20,17 @@
     bottom: 0
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.2))
 
+  &:hover
+    #header-title
+      opacity: 0 /* 仅隐藏标题 */
+    #banner
+      filter: blur(0px)
+      transform: scale(1.01)
+
 #header-outer
   height: 100%
   position: relative
-  z-index: 2 /* 文字层在图片上方 */
+  z-index: 2
   pointer-events: none /* 让鼠标穿透空白区域，直接触碰到底下的头图 */
 
 /* 恢复链接和搜索框的鼠标点击功能 */
@@ -41,30 +48,28 @@
   left: 0
   width: 100%
   height: 100%
-  background: url("/images/TestBanner.png") center #000 /* 你的图片路径 */
+  background: url("/images/banner-yu.jpeg") center #000
   background-size: cover
   z-index: 1
   filter: blur(5px)
-  transform: scale(1.05) /* 稍微放大，防止模糊后边缘出现白边 */
-  transition: filter 0.5s ease, transform 0.5s ease /* 平滑过渡动画 */
-
-  &:hover
-    filter: blur(0px)
-    transform: scale(1.01)
+  transform: scale(1.05)
+  transition: filter 0.5s ease, transform 0.5s ease
 
 #header-title
   text-align: center
   height: logo-size
   position: absolute
-  top: 50%
+  top: 10%
   left: 0
   width: 100%
   margin-top: logo-size * -0.5
+  opacity: 1 /* 默认完全不透明 */
+  transition: opacity 0.5s ease
 
 $logo-text
   text-decoration: none
-  color: #fff
-  font-weight: 300
+  color: #300000
+  font-weight: 350
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3)
 
 #logo
@@ -72,6 +77,7 @@ $logo-text
   font-size: logo-size
   line-height: logo-size
   letter-spacing: 2px
+  font-size: 60px
 
 #subtitle
   @extend $logo-text
@@ -86,7 +92,6 @@ $logo-text
   float: left
   margin-left: -15px
 
-/* 修复导航栏热区偏下和文字图标不对齐的问题 */
 $nav-link
   float: left
   color: #fff
@@ -94,11 +99,11 @@ $nav-link
   text-decoration: none
   text-shadow: 0 1px rgba(0, 0, 0, 0.2)
   transition: opacity 0.2s
-  display: flex /* 使用 Flex 布局绝对居中 */
+  display: flex
   align-items: center
   justify-content: center
-  height: 60px /* 固定整个热区高度 */
-  padding: 0 15px /* 去除上下 padding */
+  height: 60px
+  padding: 0 15px
   box-sizing: border-box
   &:hover
     opacity: 1
@@ -106,13 +111,12 @@ $nav-link
 .nav-icon
   @extend $nav-link
   font-size: font-size
-  width: 50px /* 固定图标热区宽度 */
+  width: 50px
   height: 60px
   padding: 0
   position: relative
   cursor: pointer
   
-  /* 剥离字体图标自带的行高，确保严丝合缝 */
   span, i
     display: block
     line-height: 1

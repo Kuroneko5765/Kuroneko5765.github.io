@@ -4,12 +4,12 @@
 
 # Site
 title: KRNK's Nest
-subtitle: 随便放点东西
+subtitle: 梦到啥写啥
 description: ''
 keywords:
 author: KRNK
 language: zh-CN
-timezone: ''
+timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
