@@ -104,3 +104,7 @@ deploy:
   type: git
   repo: https://github.com/Kuroneko5765/Kuroneko5765.github.io.git
   branch: main
+
+mermaid:
+  enable: true
+  version: "10.9.1"
